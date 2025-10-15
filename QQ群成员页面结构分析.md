@@ -2,10 +2,10 @@
 
 ## 页面概览
 
-- **页面URL**: `https://qun.qq.com/member.html#gid=1061041524`
+- **页面URL**: `https://qun.qq.com/member.html#gid={群号}`
 - **主表格ID**: `groupMember`
 - **数据结构**: 多tbody分段加载
-- **测试群组成员总数**: 1427人
+- **测试群组成员总数**: 示例群组约1400+人
 
 ## HTML结构分析
 
@@ -32,13 +32,13 @@
   <tbody>
     <!-- 更多数据行... -->
   </tbody>
-  <!-- 共69个tbody，每个包含约20条数据 -->
+  <!-- 多个tbody，每个包含约20条数据 -->
 </table>
 ```
 
 ### 关键特征
 
-1. **多tbody分段**: 表格包含69个`<tbody>`元素，总共1427行数据
+1. **多tbody分段**: 表格包含多个`<tbody>`元素（示例中约60-70个），总共上千行数据
 2. **懒加载机制**: 数据通过多个tbody分批加载，避免单次加载过多DOM
 3. **表头**: 第一个tbody的第一行包含`<th>`元素作为表头
 
@@ -74,47 +74,47 @@
          id="useIcon{QQ号}">
 
     <!-- 昵称 -->
-    <span>周TC</span>
+    <span>用户昵称</span>
   </td>
 
   <td class="td-card">
     <!-- 群昵称/群名片 -->
     <span>
       <span class="group-card group-card{QQ号}">
-        七牛云 HR
+        群名片示例
       </span>
       <input class="member-card"
              id="member-card{QQ号}"
-             value="七牛云 HR"
+             value="群名片示例"
              type="text"
-             data-old="七牛云 HR"
+             data-old="群名片示例"
              data-id="{QQ号}">
     </span>
   </td>
 
   <td>
     <!-- QQ号 -->
-    910603272
+    123456789
   </td>
 
   <td>
     <!-- 性别: 男/女/未知 -->
-    女
+    男
   </td>
 
   <td>
     <!-- Q龄: 格式为"X年" -->
-    17年
+    10年
   </td>
 
   <td>
     <!-- 入群时间: YYYY/MM/DD -->
-    2025/09/29
+    2025/01/01
   </td>
 
   <td>
     <!-- 最后发言: YYYY/MM/DD -->
-    2025/10/15
+    2025/01/15
   </td>
 
   <td class="td-delete">
@@ -148,16 +148,16 @@
 ```json
 {
   "no": "1",
-  "nickname": "周TC",
-  "avatarUrl": "https://q4.qlogo.cn/g?b=qq&nk=910603272&s=140",
-  "qqNumber": "910603272",
+  "nickname": "用户A",
+  "avatarUrl": "https://q4.qlogo.cn/g?b=qq&nk=123456789&s=140",
+  "qqNumber": "123456789",
   "isGroupOwner": true,
   "isAdmin": false,
-  "groupCard": "七牛云 HR",
-  "gender": "女",
-  "qAge": "17年",
-  "joinTime": "2025/09/29",
-  "lastSpeakTime": "2025/10/15"
+  "groupCard": "技术部-张三",
+  "gender": "男",
+  "qAge": "15年",
+  "joinTime": "2025/01/01",
+  "lastSpeakTime": "2025/01/15"
 }
 ```
 
@@ -165,16 +165,16 @@
 ```json
 {
   "no": "2",
-  "nickname": "牛小七",
-  "avatarUrl": "https://q4.qlogo.cn/g?b=qq&nk=3948531342&s=140",
-  "qqNumber": "3948531342",
+  "nickname": "用户B",
+  "avatarUrl": "https://q4.qlogo.cn/g?b=qq&nk=987654321&s=140",
+  "qqNumber": "987654321",
   "isGroupOwner": false,
   "isAdmin": false,
-  "groupCard": "牛小七-七牛校",
-  "gender": "未知",
-  "qAge": "0年",
-  "joinTime": "2025/09/30",
-  "lastSpeakTime": "2025/10/15"
+  "groupCard": "市场部-李四",
+  "gender": "女",
+  "qAge": "8年",
+  "joinTime": "2025/01/05",
+  "lastSpeakTime": "2025/01/14"
 }
 ```
 
@@ -182,16 +182,16 @@
 ```json
 {
   "no": "3",
-  "nickname": "早睡身体好",
-  "avatarUrl": "https://q4.qlogo.cn/g?b=qq&nk=2643523683&s=140",
-  "qqNumber": "2643523683",
+  "nickname": "用户C",
+  "avatarUrl": "https://q4.qlogo.cn/g?b=qq&nk=555666777&s=140",
+  "qqNumber": "555666777",
   "isGroupOwner": false,
   "isAdmin": false,
   "groupCard": "",
   "gender": "男",
-  "qAge": "11年",
-  "joinTime": "2025/10/15",
-  "lastSpeakTime": "2025/10/15"
+  "qAge": "3年",
+  "joinTime": "2025/01/10",
+  "lastSpeakTime": "2025/01/12"
 }
 ```
 
@@ -295,10 +295,10 @@ console.log(`共提取 ${allMembers.length} 位群成员`);
 
 ## 统计信息
 
-- **总tbody数**: 69个
-- **总成员数**: 1427人
+- **总tbody数**: 根据群成员数量动态生成（示例：60-70个）
+- **总成员数**: 取决于具体群组（示例：1000-2000人）
 - **群主数**: 1人
-- **管理员数**: 0人
+- **管理员数**: 0-多人
 - **平均每tbody行数**: 约20-21行
 
 ## Excel导出建议字段
